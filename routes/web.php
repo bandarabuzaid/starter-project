@@ -3,8 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\ThemeController;
+
+Route::controller(ThemeController::class)->name('theme.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/category', 'category')->name('category');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::get('/details', 'details')->name('details');
+    Route::get('/login', 'login')->name('login');
+    Route::get('/register', 'register')->name('register');
 });
 
 Route::get('/dashboard', function () {
